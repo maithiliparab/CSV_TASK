@@ -197,6 +197,40 @@ public class ProductMapper {
 
             product.setVariationOptions(variationOptions);
         }
+        
+     // CUSTOM PROPERTY : RATING
+        List<CatalogAdminsProductProperty> properties = new ArrayList<>();
+
+        if (csv.getRating() != null && !csv.getRating().isBlank()) {
+
+            CatalogAdminsProductProperty ratingProperty = new CatalogAdminsProductProperty();
+            ratingProperty.setAttributeFQN("tenant~rating");
+
+            CatalogAdminsProductPropertyValue value = new CatalogAdminsProductPropertyValue();
+            value.setValue(csv.getRating());
+
+            ratingProperty.setValues(List.of(value));
+
+            properties.add(ratingProperty);
+        }
+
+        product.setProperties(properties);
+        
+     // EXTRAS
+        List<ProductExtra> extras = new ArrayList<>();
+
+        ProductExtra extra = new ProductExtra();
+        extra.setAttributeFQN("tenant~giftwrap"); // attribute created in product type
+
+        ProductExtraValue value = new ProductExtraValue();
+        value.setValue("10");
+
+        extra.setValues(List.of(value));
+
+        extras.add(extra);
+
+        product.setExtras(extras);
+
 
         return product;
     }

@@ -67,7 +67,7 @@ public class ProductTypeService {
 	        System.out.println("ProductType already exists: " + productType.getName());
 	        return;
 	    }
-           System.out.println(productType);
+         //  System.out.println(productType);
 	    // Create ProductType (only API call)
 	     ProductType created = api.addProductType(productType);
 

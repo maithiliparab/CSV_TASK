@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import com.jsp.client.dto.MasterProductCsvDTO;
+import com.kibocommerce.sdk.catalogadministration.models.AttributeInProductType;
 import com.kibocommerce.sdk.catalogadministration.models.CatalogAdminsAttribute;
 import com.kibocommerce.sdk.catalogadministration.models.CatalogAdminsAttributeLocalizedContent;
 import com.kibocommerce.sdk.catalogadministration.models.CatalogAdminsAttributeVocabularyValue;
@@ -47,10 +48,9 @@ public class AttributeMapper {
 		content.setLocaleCode(csv.getLocaleCode());
 		content.setName(csv.getAttributeLabel());
 		attribute.setContent(content);
-
 		return attribute;
 	}
-
+	
 	private Boolean parseBoolean(String value) {
 		return value != null && value.trim().equalsIgnoreCase("true");
 	}
